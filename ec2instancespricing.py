@@ -512,17 +512,19 @@ def get_ec2_ondemand_instances_prices(filter_region=None, filter_instance_type=N
     return result
 
 def test_t2med_linux():
+    result = {'regions': [{'region': u'us-east-1','instanceTypes': [{'os': u'linux', 'price': 0.052,
+             'type': u't2.medium'}]}], 'config': {'currency': 'USD', 'unit': 'perhr'}}
+
     assert get_ec2_ondemand_instances_prices(filter_region='us-east-1', filter_instance_type='t2.medium',
-                                             filter_os_type='linux') == {'regions': [{'region': u'us-east-1',
-                                             'instanceTypes': [{'os': u'linux', 'price': 0.052,
-                                             'type': u't2.medium'}]}], 'config': {'currency': 'USD', 'unit': 'perhr'}}
+                                             filter_os_type='linux') == result
 
 
 def test_c48xlarge_mswin():
+    result = {'regions': [{'region': u'us-east-1','instanceTypes': [{'os': u'mswin', 'price': 3.184,
+             'type': u'c4.8xlarge'}]}], 'config': {'currency': 'USD', 'unit': 'perhr'}}
+
     assert get_ec2_ondemand_instances_prices(filter_region='us-east-1', filter_instance_type='c4.8xlarge',
-                                             filter_os_type='mswin') == {'regions': [{'region': u'us-east-1',
-                                             'instanceTypes': [{'os': u'mswin', 'price': 3.184, 'type': u'c4.8xlarge'}]}],
-                                             'config': {'currency': 'USD', 'unit': 'perhr'}}
+                                             filter_os_type='mswin') == result
 
 
 if __name__ == "__main__":
